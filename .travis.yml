@@ -1,0 +1,6 @@
+language: csharp
+mono: none
+dotnet: 2.1.4
+solution: "./NameSorter/MSUnitTest.NameSorter.sln"
+script:
+- dotnet test "./NameSorter/MSUnitTest.NameSorter/MSUnitTest.NameSorter.csproj"

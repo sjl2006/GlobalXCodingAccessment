@@ -58,7 +58,7 @@ namespace NameSorterApp.MSUnitTest
         public void TestGetNameListFromFile_NullList()
         {
             List<NameInfo> NameList = null;
-            string InputPath = @".\NormalData.txt";
+            string InputPath = @"../../../TestData/NormalData.txt";
             RetCode retCode;
 
             retCode = InstSortNames.GetNameListFromFile(InputPath, ref NameList);
@@ -71,7 +71,7 @@ namespace NameSorterApp.MSUnitTest
         public void TestGetNameListFromFile_NonEmptyList()
         {
             List<NameInfo> NameList = new List<NameInfo>();
-            string InputPath = @".\NormalData.txt";
+            string InputPath = @"../../../TestData/NormalData.txt";
             RetCode retCode;
 
             NameList.Add(new NameInfo() { LastName = "Archer", GivenName = "Adonis Julius" });
@@ -90,7 +90,7 @@ namespace NameSorterApp.MSUnitTest
             bool Result = false;
             RetCode retCode;
 
-            string InputPath = @".\NormalData.txt";
+            string InputPath = @"../../../TestData/NormalData.txt";
 
             ExpectedList.Add(new NameInfo() { LastName = "Parsons", GivenName = "Janet " });
             ExpectedList.Add(new NameInfo() { LastName = "Lewis", GivenName = "Vaughn " });
@@ -113,7 +113,7 @@ namespace NameSorterApp.MSUnitTest
             bool Result = false;
             RetCode retCode;
 
-            string InputPath = @".\InvalidData.txt";
+            string InputPath = @"../../../TestData/InvalidData.txt";
 
             ExpectedList.Add(new NameInfo() { LastName = "Lewis", GivenName = "Vaughn " });
             ExpectedList.Add(new NameInfo() { LastName = "Archer", GivenName = "Adonis Julius " });
@@ -131,7 +131,7 @@ namespace NameSorterApp.MSUnitTest
         public void TestGetNameListFromFile_EmptyFile_1()
         {
             List<NameInfo> NameList = new List<NameInfo>();
-            string InputPath = @".\EmptyData.txt";
+            string InputPath = @"../../../TestData/EmptyData.txt";
             RetCode retCode;
 
             retCode = InstSortNames.GetNameListFromFile(InputPath, ref NameList);
@@ -144,7 +144,7 @@ namespace NameSorterApp.MSUnitTest
         public void TestGetNameListFromFile_EmptyFile_2()
         {
             List<NameInfo> NameList = new List<NameInfo>();
-            string InputPath = @".\EmptyDataOnlyBlank.txt";
+            string InputPath = @"../../../TestData/EmptyDataOnlyBlank.txt";
             RetCode retCode;
 
             retCode = InstSortNames.GetNameListFromFile(InputPath, ref NameList);
@@ -295,23 +295,11 @@ namespace NameSorterApp.MSUnitTest
         }
 
         [TestMethod]
-        /// <summary> Test with the normal data in absolute path</summary>
-        public void TestValidityCheck_NormalAbsoluteFilePath()
-        {
-            RetCode retCode;
-            string[] astArgs = { @"C:\NormalData.txt" };
-
-            retCode = instValidityCheck.ParameterCheck(astArgs);
-
-            Assert.IsTrue(retCode == RetCode.SUCCESS);
-        }
-
-        [TestMethod]
         /// <summary> Test with normal data in relative path</summary>
         public void TestValidityCheck_NormalRelativeFilePath()
         {
             RetCode retCode;
-            string[] astArgs = { @".\NormalData.txt" };
+            string[] astArgs = { @"../../../TestData/NormalData.txt" };
 
             retCode = instValidityCheck.ParameterCheck(astArgs);
 
